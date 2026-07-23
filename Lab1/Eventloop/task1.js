@@ -26,8 +26,3 @@ function main() {
 }
 main();
 // In asynchronous, we use eventloop to manage the call stack.
-// Asynchronous calls using timer:
-// 1) set TIMEOUT
-// 2) Set setImmediate
-// 3) process.nextTick
-// 4) setInterval
