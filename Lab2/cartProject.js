@@ -107,7 +107,7 @@ const main = async () => {
         await updateQuantity(Number(pid2));
         break;
       case 5:
-        console.log("Checkout");
+        console.log("Check-out");
         break;
       default:
         console.log("invalid choice! Try again.");
