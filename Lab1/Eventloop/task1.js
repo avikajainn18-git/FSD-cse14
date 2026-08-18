@@ -11,7 +11,7 @@ const f2 = () => {
     console.log("f2 starts");
     f3();
     console.log("f2 running");
-    console.log("f2 stopd");
+    console.log("f2 stop");
 }
 const f3 = () => {
     console.log("f3 starts");

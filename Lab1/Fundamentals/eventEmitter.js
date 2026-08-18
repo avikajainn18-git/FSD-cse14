@@ -1,7 +1,7 @@
 import { EventEmitter } from "node:events";
 const task = new EventEmitter();
 
-const sayHi = (name) => {
+const sayHi = (name) => { 
   console.log(`Logged-in as ${name}`);
 };
 task.once("greet", () => {
