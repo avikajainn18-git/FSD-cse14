@@ -50,18 +50,22 @@ const removeProduct = async (pid) => {
     console.log("Product not found.")
   }
 };
-const updateQuantity = async (pid) => {
+const updateQuantity = async (pid,option="-") => {
   const cart = await getCart();
   const isFoundInCart = cart.find((item) => item.id === pid);
   if (isFoundInCart) {
-    isFoundInCart.qty -= 1;
-    await saveCart(cart);
-    console.log(`${product.name} quantity updated from 🛒`);
+    if (isFoundInCart.qty == 1) {
+      await removeProduct(pid);
+    }
+    else {
+      isFoundInCart.qty -= 1;
+      await saveCart(cart);
+    }
+  console.log(`${isFoundInCart.name} quantity updated from 🛒`);
   }
   else {
-    console.log(`Product with id: ${pid} not found`)
+  console.log(`Product not found`)
   }
-
 };
 
 
@@ -83,7 +87,7 @@ const main = async () => {
         await displayCart();
         break;
       case 2:
-        const item = await cin.question("Enter id,name,price,qty:");
+        const item = await cin.question("Enter id, name, price, qty:");
         const [id, name, price, qty] = item.split(",").map((p) => p.trim());
 
         await addToCart({
@@ -99,11 +103,11 @@ const main = async () => {
         await removeProduct(Number(pid));
         break;
       case 4:
-        pid = await cin.question("Enter product id:");
-        await updateQuantity(Number(pid));
+        let pid2 = await cin.question("Enter product id, option(+/-):");
+        await updateQuantity(Number(pid2));
         break;
       case 5:
-        console.log("checkout");
+        console.log("Checkout");
         break;
       default:
         console.log("invalid choice! Try again.");
